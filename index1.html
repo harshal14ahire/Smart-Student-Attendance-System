@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Attendance System</title>
+    <style>
+        body 
+    {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient( #a9e1e2,#c0bdbd, #efefa9);
+    }
+
+        header{
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+        nav {
+            background-color: #444;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+
+        h2,h3,h4 {
+            text-align: center;
+            color: rgba(23, 21, 21, 0.922);
+            margin-bottom: 20px;
+        }
+
+        form {
+            text-align: center;
+            background-image: url("mvplogo2.jpeg");
+            background-attachment: fixed;
+            background-color: #ffffff;
+            background-size: 18%;
+            margin: 0 auto;
+            background-repeat: no-repeat;
+            background-position: center;
+            max-width: 450px;
+            height: 800px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(106, 226, 45, 0.1);
+           
+            
+        }
+
+        label, input {
+            display: block;
+            padding: 13px;
+            margin-bottom: 10px;
+        }
+
+        input ,select,option{
+            padding: 10px;
+            background-color: transparent;
+            width: 100%;
+            font-size: larger;
+            font-weight: 500;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            border: 1px solid #cccccc;
+            border-radius: 30px;
+        }
+
+        input:hover {
+            border: 1px solid #f2f532;
+        }
+
+        button {
+            padding: 10px 16px;
+            cursor: pointer;
+            background-color: #441edb;
+            color:#fff;
+            border:none;
+            border-radius: 30px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #0ff466fb;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+            color: red;
+            font-size: larger;
+        }
+ 
+        footer {
+            background-color:#333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        
+            margin-bottom: 0%;
+            width: 100%;
+        } </style>
+        <script>
+    // Your existing script here
+
+    // Function to print text in h2 tag character by character
+    function printTextInH2(text) {
+        let index = 0;
+        const intervalId = setInterval(() => {
+            document.getElementById('h2Text').textContent += text[index];
+            index++;
+            if (index === text.length) clearInterval(intervalId);
+        }, 100); // Adjust the interval (in milliseconds) as needed
+    }
+
+    // Function to print text in h3 tag character by character
+    function printTextInH3(text) {
+        let index = 0;
+        const intervalId = setInterval(() => {
+            document.getElementById('h3Text').textContent += text[index];
+            index++;
+            if (index === text.length) clearInterval(intervalId);
+        }, 100); // Adjust the interval (in milliseconds) as needed
+    }
+
+    // Function to print text in h4 tag character by character
+    function printTextInH4(text) {
+        let index = 0;
+        const intervalId = setInterval(() => {
+            document.getElementById('h4Text').textContent += text[index];
+            index++;
+            if (index === text.length) clearInterval(intervalId);
+        }, 100); // Adjust the interval (in milliseconds) as needed
+    }
+
+    // Call the functions with your desired text
+    printTextInH2("Maratha Vidya Prasarak Samaj’s");
+    printTextInH3("K.A.A.N.M.S. Arts, Commerce and Science College, Satana");
+    printTextInH4("Department of Computer Science");
+</script>
+<script>function fillDateAndTime() {
+    const now = new Date();
+    const date = now.toLocaleDateString();
+    const time = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+
+    // Set the values of the date and time fields
+    document.getElementById("attendanceDate").value = date;
+    document.getElementById("attendanceTime").value = time;
+}
+
+
+
+    </script>
+</head>
+<body >
+ <header>
+        <h1>Smart Student Attendance System</h1>
+    </header>
+
+    <nav>
+        <a href="index1.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="FeedBack.html">FeedBack</a>
+        <a href="contact.html">Contact</a>
+        <a href="ErrorAttendance.html">ErrorAttendance</a>
+    </nav>
+   
+    <h2 id="h2Text"></h2>
+    <h3 id="h3Text"></h3>
+    <h4 id="h4Text"></h4>
+    
+    
+<div class="form-container">
+    <form id="attendanceForm" action="con2.php" method="post">
+        <label for="studentName"><b>Student Name:</b></label>
+        <input type="text" id="studentName" name="studentName" required><br>
+        <label for="studentID"><b>Student ID:</b></label>
+        <input type="number" id="studentID"  name="studentID" required><br>
+
+        <label for="studentClass"><b>Student Class:</b></label>
+        <select id="classname" name="classname" >
+            <option   id="classname" value="F.Y.BSC computer Science">F.Y.BSC computer Science</option>
+            <option  id="classname" value="S.Y.BSC computer Science">S.Y.BSC computer Science</option>
+            <option  id="classname" value="T.Y.BSC computer Science">T.Y.BSC computer Science</option>
+        <!--<input type="text" id="classname" name="classname" required><br> -->
+    </select>
+        <label for="lectureSubject"><b>Lecture Subject:</b></label>
+        <select id="lectureSubject"  name="lectureSubject" >
+            <option  id="lectureSubject"  value="Compiler Construction">Compiler Construction</option>
+            <option  id="lectureSubject"  value="Object Oriented Programming Using Java 2">Object Oriented Programming Using Java-II</option>
+            <option id="lectureSubject"  value="Operation System 2">Operation System-II</option>
+            <option id="lectureSubject"  value="Operation System 1">Operation System-I</option>
+            <option id="lectureSubject"  value="Therotical Computer Science">Therotical Computer Science</option>
+            <option id="lectureSubject"  value="Software Testing">Software Testing</option>
+            <option id="lectureSubject"  value="Software Testing Tools">Software Testing Tools</option>
+            <option id="lectureSubject"  value="Python Programming">Python Programming</option>
+            <option id="lectureSubject"  value="Data Science ">Data Science</option>
+            <option id="lectureSubject"  value="Blockchain Technology">Blockchain Technology</option>
+            <option id="lectureSubject"  value="Web Technologies-I">Web Technologies-I</option>
+            <option id="lectureSubject"  value="Web Technologies 2">Web Technologies-II</option>
+            <option id="lectureSubject"  value="Computer Network 2">Computer Network-II</option>
+        <!--<input type="text" id="classname" name="classname" Web Technologies-IIrequired><br> -->
+    </select>
+        <!--<input type="text" id="lectureSubject"  name="lectureSubject" required><br>-->
+        <label for="attendanceDate"><b>Attendance Date:</b></label>
+        <input type="text" id="attendanceDate"   name="attendanceDate"   readonly    placeholder="Date" ><br>
+        <label for="attendanceTime"><b>Attendance Time:</b></label>
+        <input type="text" id="attendanceTime"  name="attendanceTime"  readonly placeholder="Time" ><br>
+
+        <button id="markAttendanceButton" onclick="markAttendance()">Mark Attendance</button>
+    </form></div>
+    <p id="location"></p>
+    <p id="timestamp"></p>
+    <p id="message"></p>
+
+
+ <footer>
+        <p>&copy; 2024 Smart Student Attendance System | Maratha Vidya Prasarak Samaj’s</p>
+    </footer>
+
+    <script>
+        let studentCoordinates = null;
+      
+      // Function to request location when the page loads
+      window.onload = function () {
+          getLocation();
+          fillDateAndTime();
+      };
+      
+      function getLocation() {
+          if ("geolocation" in navigator) {
+              navigator.geolocation.getCurrentPosition(function (position) {
+                  studentCoordinates = {
+                      latitude: position.coords.latitude,
+                      longitude: position.coords.longitude
+                  };
+                  document.getElementById("location").textContent = `{latitude: ${studentCoordinates.latitude}, longitude: ${studentCoordinates.longitude} },`;
+                  checkAttendanceEligibility(); // Check eligibility after getting coordinates.
+              });
+          } else {
+              console.log("Geolocation is not available.");
+          }
+      }
+      
+      function checkAttendanceEligibility() {
+          if (studentCoordinates === null) {
+              document.getElementById("message").textContent = "Location information not available. Make Sure Your Device Location is ON";
+              disableMarkAttendanceButton(); // Disable the button if location info is not available.
+          } else {
+              const isWithinLectureRoom = isLocationWithinLectureRoom(studentCoordinates);
+      
+              if (isWithinLectureRoom) {
+                  const lastAttendanceTime = localStorage.getItem('lastAttendanceTime');
+                  if (!lastAttendanceTime || Date.now() - lastAttendanceTime > 60 * 60 * 1000) {
+                      confirm("Location validation complete. You can mark your Attendance");
+                      enableMarkAttendanceButton();
+                  } else {
+                    alert("You can only submit attendance once within one hour.");
+                      document.getElementById("message").textContent = "You can only submit attendance once within one hour.";
+                      disableMarkAttendanceButton();
+                  }
+              } else {
+                alert( "Please attend the lecture in the designated room.");
+                  document.getElementById("message").textContent = "Please attend the lecture in the designated room.";
+                  disableMarkAttendanceButton();
+              }
+          }
+      }
+      
+      function enableMarkAttendanceButton() {
+          document.getElementById("markAttendanceButton").disabled = false;
+      }
+      
+      function disableMarkAttendanceButton() {
+          document.getElementById("markAttendanceButton").disabled = true;
+      }
+      
+      
+      function isLocationWithinLectureRoom(coordinates) {
+            const lectureRoomCoordinates = [{latitude: 18.1733, longitude: 74.6896 },
+            {latitude: 19.1178, longitude: 74.1749 },{latitude: 20.580689, longitude: 74.19852 }
+             
+       ];
+       for (const coord of lectureRoomCoordinates) {
+                      const latDiff = Math.abs(coord.latitude - coordinates.latitude);
+                      const lonDiff = Math.abs(coord.longitude - coordinates.longitude);
+      
+                      // Use a tolerance range, e.g., 0.0001 degrees, for comparison
+                      if (latDiff < 0.0001 && lonDiff < 0.0001) {
+                          return true;
+                      }
+                  }
+      
+                  return false; // Return false only if no match is found
+              }
+      
+              function markAttendance() {
+                  const lastAttendanceTime = localStorage.getItem('lastAttendanceTime');
+                  if (lastAttendanceTime && Date.now() - lastAttendanceTime <= 60 * 60 * 1000) {
+                      alert("You have already submitted attendance within the last hour.");
+                      disableMarkAttendanceButton();
+                      return;
+                  }
+      
+                  if (studentCoordinates === null) {
+                      alert("Location information not available.");
+                      disableMarkAttendanceButton();
+                      return;
+                  }
+      
+                  const isWithinLectureRoom = isLocationWithinLectureRoom(studentCoordinates);
+      
+                  if (isWithinLectureRoom) {
+                      // Get the current date and time
+                      
+      
+                      document.getElementById("message").textContent = "Attendance submitted!";
+                      enableMarkAttendanceButton();
+      
+                      // Save the current timestamp to local storage
+                      localStorage.setItem('lastAttendanceTime', Date.now());
+                  } else {
+                      alert("Please attend the lecture in the designated room.");
+                      disableMarkAttendanceButton();
+                  }
+              }
+</script></body></html>
